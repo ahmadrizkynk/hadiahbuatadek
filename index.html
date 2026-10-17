@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#250713">
+  <title>Untuk Kamu, Sayang ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- Latar belakang bintang -->
+  <canvas id="universe" aria-hidden="true"></canvas>
+
+  <!-- Hati besar yang bergerak -->
+  <div class="giant-love" aria-hidden="true">
+    <span>♥</span>
+    <span>♥</span>
+    <span>♥</span>
+  </div>
+
+  <!-- Tulisan romantis membentuk hati -->
+  <div id="love-word-layer" aria-hidden="true"></div>
+
+  <!-- Konten utama -->
+  <main class="experience">
+    <div class="eyebrow">♡ A LITTLE SOMETHING FOR YOU ♡</div>
+
+    <h1 id="headline">Hai, Sayang!</h1>
+    <p id="subtitle">Aku punya sesuatu untuk kamu...</p>
+
+    <div class="heart-decoration" aria-hidden="true">♡</div>
+
+    <section class="letter">
+      <div class="letter-top">
+        <span>UNTUK KAMU</span>
+        <span>♡</span>
+      </div>
+
+      <div id="message" aria-live="polite">
+        <p class="intro-message">
+          Ada sesuatu yang ingin aku sampaikan dari hati.
+          Luangkan sedikit waktumu, ya. ❤️
+        </p>
+      </div>
+
+      <div id="signature"></div>
+    </section>
+
+    <div class="actions">
+      <button id="nextButton" class="primary-button">
+        Baca pesanku ♡
+      </button>
+
+      <button id="heartButton" class="secondary-button" hidden>
+        Buka kejutan ❤️
+      </button>
+    </div>
+
+    <p id="hint">Dibuat dengan sepenuh hati, untukmu.</p>
+  </main>
+
+  <!-- Musik latar -->
+  <audio id="background-music" loop preload="auto">
+    <source src="./love.mp3" type="audio/mpeg">
+  </audio>
+
+  <aside id="music-card">
+    <button id="music-toggle" type="button">
+      ♫ Putar musik ❤️
+    </button>
+    <p class="music-caption">A little song for you ♡</p>
+  </aside>
+
+  <!-- Layar kejutan -->
+  <section id="celebration" aria-hidden="true">
+    <div class="celebration-content">
+      <div class="celebration-heart">♥</div>
+
+      <p class="eyebrow">FROM MY HEART TO YOURS</p>
+      <h2>Kalau boleh memilih...</h2>
+
+      <p class="celebration-message">
+        Aku ingin terus belajar mencintaimu, memahami kamu,
+        dan menemukan jalan pulang bersamamu.
+      </p>
+
+      <p class="celebration-signature">
+        Dengan tulus, untukmu. ❤️
+      </p>
+
+      <div class="celebration-actions">
+        <button id="replayButton" class="primary-button">
+          Baca lagi ♡
+        </button>
+
+        <button id="closeButton" class="secondary-button">
+          Kembali
+        </button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
