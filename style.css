@@ -1,0 +1,709 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #19040e;
+  --pink: #ff91bb;
+  --pink-light: #ffd0e2;
+  --text: #fff0f6;
+  --muted: #e2b6c8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 10%, #55132e 0%, transparent 48%),
+    linear-gradient(145deg, #10020a, #2b0719 55%, #16030d);
+}
+
+/* CAHAYA LATAR BELAKANG */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -35%;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(255, 75, 145, .22), transparent 38%),
+    radial-gradient(ellipse at 80% 70%, rgba(130, 20, 75, .28), transparent 42%);
+  filter: blur(35px);
+  animation: mistMove 16s ease-in-out infinite alternate;
+}
+
+.ambient-light {
+  position: fixed;
+  inset: -25%;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 25% 35%, rgba(255, 50, 125, .19), transparent 30%),
+    radial-gradient(ellipse at 75% 65%, rgba(154, 20, 91, .24), transparent 35%);
+  filter: blur(45px);
+  animation: ambientMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes mistMove {
+  from { transform: translate(-3%, 2%) scale(1); }
+  to   { transform: translate(4%, -3%) scale(1.12); }
+}
+
+@keyframes ambientMove {
+  from { transform: translate(-4%, -2%) rotate(0deg); }
+  to   { transform: translate(4%, 3%) rotate(8deg); }
+}
+
+/* BINTANG */
+
+#universe {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* HATI BESAR DI BELAKANG */
+
+.giant-love {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.giant-love span {
+  position: absolute;
+  color: rgba(255, 64, 135, .045);
+  -webkit-text-stroke: 1px rgba(255, 124, 174, .3);
+  font-size: clamp(250px, 52vw, 680px);
+  line-height: 1;
+  text-shadow: 0 0 35px rgba(255, 58, 131, .2);
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+.giant-love span:nth-child(1) {
+  animation: bigHeart1 11s ease-in-out infinite;
+}
+
+.giant-love span:nth-child(2) {
+  font-size: clamp(200px, 40vw, 520px);
+  -webkit-text-stroke-color: rgba(255, 165, 203, .25);
+  animation: bigHeart2 14s ease-in-out infinite;
+}
+
+.giant-love span:nth-child(3) {
+  font-size: clamp(140px, 29vw, 370px);
+  -webkit-text-stroke-color: rgba(255, 83, 152, .3);
+  animation: bigHeart3 9s ease-in-out infinite;
+}
+
+@keyframes bigHeart1 {
+  0%, 100% { transform: translate(-7%, 3%) rotate(-12deg) scale(.82); opacity: .4; }
+  50%      { transform: translate(7%, -5%) rotate(11deg) scale(1.12); opacity: .85; }
+}
+
+@keyframes bigHeart2 {
+  0%, 100% { transform: translate(8%, -4%) rotate(13deg) scale(1); opacity: .3; }
+  50%      { transform: translate(-8%, 6%) rotate(-13deg) scale(.8); opacity: .75; }
+}
+
+@keyframes bigHeart3 {
+  0%, 100% { transform: translate(0, 5%) rotate(-8deg) scale(.88); opacity: .35; }
+  50%      { transform: translate(4%, -7%) rotate(9deg) scale(1.17); opacity: .8; }
+}
+
+/* TULISAN YANG MEMBENTUK HATI */
+
+#love-word-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.love-word {
+  position: absolute;
+  display: block;
+  white-space: nowrap;
+  color: rgba(255, 187, 214, .82);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(9px, 1.15vw, 15px);
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-shadow: 0 0 8px rgba(255, 87, 152, .55),
+               0 0 18px rgba(255, 57, 132, .28);
+  transform: translate(-50%, -50%);
+  animation:
+    wordPulse var(--pulse, 4s) ease-in-out infinite,
+    wordFade var(--fade, 5s) ease-in-out infinite,
+    wordDrift var(--drift, 8s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+  will-change: opacity, transform;
+}
+
+@keyframes wordPulse {
+  0%, 100% { scale: .88; }
+  50%      { scale: 1.14; }
+}
+
+@keyframes wordFade {
+  0%, 100% { opacity: .3; }
+  50%      { opacity: 1; }
+}
+
+@keyframes wordDrift {
+  from { translate: -5px 7px; }
+  to   { translate: 6px -10px; }
+}
+
+/* KONTEN UTAMA */
+
+.experience {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(760px, calc(100% - 32px));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 65px 0 95px;
+  text-align: center;
+  animation: entrance 1.4s ease both;
+}
+
+@keyframes entrance {
+  from { opacity: 0; transform: translateY(22px); filter: blur(5px); }
+  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+.eyebrow {
+  color: var(--pink);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .28em;
+  line-height: 1.8;
+}
+
+h1, h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+}
+
+#headline {
+  margin: 12px 0 5px;
+  color: #fff0f6;
+  font-size: clamp(42px, 8vw, 76px);
+  line-height: 1.08;
+  text-shadow: 0 0 25px rgba(255, 116, 174, .38);
+  animation: headlineGlow 4s ease-in-out infinite,
+             headlineFloat 6s ease-in-out infinite;
+}
+
+@keyframes headlineGlow {
+  0%, 100% { text-shadow: 0 0 14px rgba(255, 116, 174, .2); }
+  50%      { text-shadow: 0 0 36px rgba(255, 116, 174, .7); }
+}
+
+@keyframes headlineFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+#subtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: clamp(13px, 2vw, 16px);
+  line-height: 1.8;
+  animation: subtitleFloat 5s ease-in-out infinite;
+}
+
+@keyframes subtitleFloat {
+  0%, 100% { opacity: .7; transform: translateY(0); }
+  50%      { opacity: 1; transform: translateY(-3px); }
+}
+
+.heart-decoration {
+  margin: 18px 0 24px;
+  color: var(--pink);
+  font-size: 30px;
+  animation: decorationPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes decorationPulse {
+  0%, 100% { transform: scale(.9) rotate(-7deg); opacity: .7; }
+  50%      { transform: scale(1.2) rotate(7deg); opacity: 1; }
+}
+
+/* KARTU SURAT */
+
+.letter {
+  position: relative;
+  width: 100%;
+  padding: clamp(22px, 5vw, 42px);
+  border: 1px solid rgba(255, 190, 215, .2);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(75, 16, 43, .88), rgba(28, 5, 19, .92));
+  box-shadow: 0 25px 80px rgba(0, 0, 0, .24),
+              inset 0 1px 0 rgba(255, 230, 240, .06),
+              0 0 35px rgba(255, 45, 125, .08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  text-align: left;
+  animation: letterFloat 6s ease-in-out infinite;
+  transition: border-color .5s ease, box-shadow .5s ease;
+}
+
+.letter::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(125deg, transparent 15%, rgba(255, 190, 215, .08) 50%, transparent 85%);
+  background-size: 200% 200%;
+  animation: letterShimmer 7s ease-in-out infinite;
+}
+
+@keyframes letterFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+
+@keyframes letterShimmer {
+  0%, 100% { background-position: 100% 0%; }
+  50%      { background-position: 0% 100%; }
+}
+
+.letter:hover {
+  border-color: rgba(255, 190, 215, .4);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .3),
+              0 0 45px rgba(255, 45, 125, .14);
+}
+
+.letter-top {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 190, 215, .15);
+  color: #e9abc3;
+  font-size: 9px;
+  letter-spacing: .23em;
+}
+
+.letter-top span:last-child {
+  color: var(--pink);
+  font-size: 20px;
+}
+
+#message {
+  position: relative;
+  color: #f7dce7;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(18px, 2.6vw, 23px);
+  line-height: 1.85;
+  letter-spacing: .01em;
+}
+
+#message p {
+  margin: 0 0 20px;
+}
+
+#message p:last-child {
+  margin-bottom: 0;
+}
+
+.intro-message {
+  color: #f4c7d9;
+  text-align: center;
+}
+
+.message-paragraph {
+  animation: paragraphReveal .9s ease both;
+}
+
+@keyframes paragraphReveal {
+  from { opacity: 0; transform: translateY(16px); filter: blur(3px); }
+  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+#signature {
+  position: relative;
+  margin-top: 24px;
+  color: var(--pink);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-style: italic;
+  text-align: right;
+  animation: signatureFade 1s ease both;
+}
+
+@keyframes signatureFade {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* TOMBOL */
+
+.actions, .celebration-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.primary-button, .secondary-button, #music-toggle {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 190, 215, .32);
+  border-radius: 999px;
+  padding: 13px 24px;
+  color: #fff1f7;
+  font-size: 12px;
+  letter-spacing: .04em;
+  transition: transform .3s ease, box-shadow .3s ease, filter .3s ease;
+}
+
+.primary-button {
+  background: linear-gradient(120deg, #9e1e50, #df5c8c, #a62658);
+  background-size: 200% 200%;
+  box-shadow: 0 7px 28px rgba(215, 49, 112, .25);
+  animation: buttonShimmer 5s ease-in-out infinite;
+}
+
+@keyframes buttonShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+.primary-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 45%;
+  height: 200%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .25), transparent);
+  transform: rotate(22deg);
+  animation: buttonShine 4s ease-in-out infinite;
+}
+
+@keyframes buttonShine {
+  0%, 65%, 100% { left: -100%; }
+  35%           { left: 150%; }
+}
+
+.secondary-button, #music-toggle {
+  background: rgba(255, 225, 238, .07);
+  backdrop-filter: blur(8px);
+}
+
+.primary-button:hover, .secondary-button:hover, #music-toggle:hover {
+  transform: translateY(-3px) scale(1.035);
+  box-shadow: 0 10px 32px rgba(237, 72, 137, .3);
+  filter: brightness(1.1);
+}
+
+.primary-button:active, .secondary-button:active, #music-toggle:active {
+  transform: scale(.95);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--pink-light);
+  outline-offset: 4px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#hint {
+  margin-top: 21px;
+  color: rgba(229, 176, 198, .72);
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+
+/* KONTROL MUSIK */
+
+#music-card {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 10;
+  text-align: center;
+}
+
+#music-toggle {
+  padding: 11px 16px;
+  font-size: 11px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, .2);
+}
+
+.music-caption {
+  margin: 7px 0 0;
+  color: rgba(255, 205, 225, .72);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* BUNGA SAKURA DAN HATI BERGUGURAN */
+
+.falling-petal {
+  position: fixed;
+  top: -55px;
+  left: var(--start-x, 50%);
+  z-index: 5;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  font-size: var(--petal-size, 20px);
+  opacity: 0;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 8px rgba(255, 135, 190, .35));
+  animation: petalFall var(--fall-duration, 10s) linear forwards;
+}
+
+.falling-petal.is-heart {
+  filter: drop-shadow(0 0 9px rgba(255, 65, 145, .5));
+}
+
+@keyframes petalFall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -5vh, 0) rotate(0deg) scale(.7);
+  }
+  8% { opacity: var(--petal-opacity, .8); }
+  25% {
+    transform: translate3d(65px, 25vh, 0) rotate(120deg) scale(1);
+  }
+  48% {
+    transform: translate3d(-50px, 50vh, 0) rotate(250deg) scale(.9);
+  }
+  72% {
+    transform: translate3d(55px, 78vh, 0) rotate(390deg) scale(1.08);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-20px, 115vh, 0) rotate(570deg) scale(.8);
+  }
+}
+
+/* HATI TERBANG SAAT DIKLIK */
+
+.heart-particle {
+  position: fixed;
+  z-index: 20;
+  pointer-events: none;
+  color: #ff80b0;
+  line-height: 1;
+  text-shadow: 0 0 14px rgba(255, 89, 157, .8);
+  animation: heartFly var(--duration, 2s) ease-out forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes heartFly {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.25) rotate(0deg);
+  }
+  15% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, -100px)))
+      scale(var(--scale, 1)) rotate(var(--rotation, 30deg));
+  }
+}
+
+.glow-burst {
+  position: fixed;
+  z-index: 15;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(255, 167, 202, .85);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 22px rgba(255, 83, 150, .65);
+  animation: glowBurst 1.4s ease-out forwards;
+}
+
+@keyframes glowBurst {
+  from { opacity: .9; transform: translate(-50%, -50%) scale(.2); }
+  to   { opacity: 0; transform: translate(-50%, -50%) scale(15); }
+}
+
+/* LAYAR KEJUTAN */
+
+#celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  background: rgba(17, 3, 11, .9);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .6s ease, visibility .6s ease;
+}
+
+#celebration.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.celebration-content {
+  width: min(540px, 100%);
+  padding: clamp(25px, 5vw, 45px);
+  border: 1px solid rgba(255, 180, 210, .23);
+  border-radius: 25px;
+  background: linear-gradient(145deg, rgba(81, 15, 45, .96), rgba(32, 5, 21, .98));
+  box-shadow: 0 20px 90px rgba(0, 0, 0, .4);
+  text-align: center;
+}
+
+#celebration.active .celebration-content {
+  animation: softArrival .8s ease both;
+}
+
+@keyframes softArrival {
+  from { opacity: 0; transform: translateY(25px) scale(.95); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+.celebration-heart {
+  color: #ff659f;
+  font-size: clamp(60px, 12vw, 90px);
+  line-height: 1.3;
+  text-shadow: 0 0 30px rgba(255, 63, 139, .75);
+  animation: celebrationHeartbeat 2s ease-in-out infinite;
+}
+
+@keyframes celebrationHeartbeat {
+  0%, 100% { transform: scale(.94); }
+  15%      { transform: scale(1.1); }
+  30%      { transform: scale(.98); }
+  45%      { transform: scale(1.13); }
+  65%      { transform: scale(1); }
+}
+
+.celebration-content h2 {
+  margin: 10px 0 12px;
+  color: #fff0f6;
+  font-size: clamp(32px, 7vw, 48px);
+}
+
+.celebration-message {
+  max-width: 390px;
+  margin: 0 auto;
+  color: #eac8d7;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(19px, 4vw, 23px);
+  line-height: 1.8;
+}
+
+.celebration-signature {
+  margin: 20px 0 0;
+  color: var(--pink);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-style: italic;
+}
+
+/* TAMPILAN HP */
+
+@media (max-width: 520px) {
+  .experience {
+    width: calc(100% - 26px);
+    padding-top: 55px;
+    padding-bottom: 100px;
+  }
+
+  .letter {
+    padding: 23px 19px;
+    border-radius: 18px;
+  }
+
+  #message {
+    font-size: 19px;
+    line-height: 1.8;
+  }
+
+  .love-word {
+    font-size: 8px;
+    letter-spacing: .04em;
+  }
+
+  .giant-love span {
+    font-size: 100vw;
+  }
+
+  #music-card {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  #music-toggle {
+    padding: 10px 13px;
+  }
+
+  .celebration-content {
+    padding: 25px 20px;
+  }
+
+  .primary-button, .secondary-button {
+    padding: 12px 18px;
+  }
+}
+
+/* Tetap menjaga kenyamanan layar kecil dan mode hemat gerakan.
+   Animasi latar utama sengaja tetap aktif. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .experience {
+    animation: none;
+  }
+}
